@@ -1,30 +1,68 @@
 
-
-
 // //  SideBar Toggle
 
-    const toggleSidebar = document.querySelector(".toggle-sidebar");
-    // const logobox = document.querySelector(".logo-box");
-    const sidebar = document.querySelector(".sidebar");
-      const sidebarList = document.querySelectorAll(".sidebar-list li"); // Use querySelectorAll for multiple elements
+    const contentContainer = document.querySelector('.content-container');
+    const uploadBox = document.querySelector('.upload-box');
+    
 
+    const toggleSidebar = document.querySelector(".toggle-sidebar");
+    const sidebar = document.querySelector(".sidebar");
+    // const logobox = document.querySelector(".logo-box");
+    // const sidebarList = document.querySelectorAll(".sidebar-list li"); // Use querySelectorAll for multiple elements
+
+    sidebar.classList.toggle("open"); 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        
     // Toggle sidebar on button click
     toggleSidebar.addEventListener("click", () => {
         sidebar.classList.toggle("close");
        
     });
 
+    // DashBoard Button 
+    document.getElementById("dashboard").addEventListener("click", function(e) {
+        e.preventDefault();
+        sidebar.classList.toggle("open");
+
+        if (contentContainer) {
+            contentContainer.style.display = "flex"; // Show the dashboard
+            uploadBox.style.display = "none";
+        } else {
+            console.error('The container element was not found.');  
+           
+        }
+    })
+
+    //Upload Button
+    document.getElementById('upload-link').addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
+         sidebar.classList.toggle("open");
+         
+        if (uploadBox) {
+            uploadBox.style.display = "block"; // Show the upload box
+            contentContainer.style.display = "none";
+               
+        } else {
+            console.error('The upload box element was not found.');
+            
+        }
+    });
+
+});
+    
+    
     // // Toggle sidebar on logo click
     // logobox.addEventListener("click", () => {
     //     sidebar.classList.toggle("close");
     // });
 
     // // Loop through sidebar list items to toggle sidebar
-    sidebarList.forEach((item) => {
-        item.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-        });
-    });
+    // sidebarList.forEach((item) => {
+    //     item.addEventListener("click", () => {
+    //         sidebar.classList.toggle("open");
+    //     });
+    // });
 
 
 
