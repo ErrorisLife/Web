@@ -23,9 +23,9 @@
             <!-- List  -->
         <ul class="sidebar-list">
            
-             <li>
-                 <div class="title">
-                    <a href="dashboard-lvstock.html" class="link">
+             <li >
+                 <div class="title" >
+                    <a href="" class="link" id="dashboard">
                         <i class='bx bxs-grid-alt'></i>
                         <span  class="name">Dashboard</span>
                     </a>
@@ -33,8 +33,8 @@
                  </div>
              </li>
              <li>
-                <div class="title" id="upload">
-                   <a href="upload.html" class="link">
+                <div class="title"  >
+                   <a href="" class="link" id="upload-link">
                     <i class='bx bxs-plus-circle'></i>
                        <span class="name">Upload</span>
                    </a>
@@ -43,7 +43,7 @@
             </li>
             <li>
                 <div class="title">
-                   <a href="#" class="link">
+                   <a href="" class="link">
                     <i class='bx bxs-file-pdf'></i>
                        <span  class="name">Documents</span>
                    </a>
@@ -52,7 +52,7 @@
             </li>
             <li>
                 <div class="title">
-                   <a href="#" class="link">
+                   <a href="" class="link">
                     <i class='bx bxs-videos'></i>
                        <span  class="name">Videos</span>
                    </a>
@@ -116,6 +116,62 @@
             </div>          
          </div>  
     </section>
+
+     <!-- ======== Upload ======= -->
+     <section class="upload-container">
+        
+        <div class="upload-box">
+          <div class="header-section">
+               <h1>Upload Files</h1>
+           </div>
+              
+           <div class="drop-section "> 
+               <div class="col">
+                   <div class="icon">
+                       <i class='bx bxs-cloud-upload'></i>
+                   </div>
+                   <span>Drag and Drop your files here</span>
+                   <span>OR</span>
+                   <button  class="file-selector">Browse Files</button>
+                   <input type="file" class="file-selector-input" accept=".docx, .doc, .pdf, .mp4" multiple>
+               </div>
+               <div class="col">
+                   <div class="drop-here">Drop Here</div>
+               </div>
+           </div> 
+           
+           <div class="list-section">
+               <div class="list-title"> Upload Files</div>
+               <div class="list">
+                   <!-- <li class="in-prog">
+
+                       <div class="col">
+                           <img src="../image/pdf.png" alt="file type">
+                       </div>
+
+                       <div class="col">
+                           <div class="file-name">
+                               <div class="name">File Name Here</div>
+                               <span>50%</span>
+                           </div>
+                           <div class="file-progress">
+                               <span></span>
+                           </div>
+                           <div class="file-size"> 2.2 MB</div>                  
+                       </div>
+
+                        <div class="col">    
+                               <svg xmlns="http://www.w3.org/2000/svg" class="cross" height="20" width="20"><path d="m5.979 14.917-.854-.896 4-4.021-4-4.062.854-.896 4.042 4.062 4-4.062.854.896-4 4.062 4 4.021-.854.896-4-4.063Z"/></svg>
+                               <svg xmlns="http://www.w3.org/2000/svg" class="tick" height="20" width="20"><path d="m8.229 14.438-3.896-3.917 1.438-1.438 2.458 2.459 6-6L15.667 7Z"/></svg>
+                       </div>
+                           
+                   </li>   -->
+               </div>
+           </div>
+           
+
+       </div>      
+   </section>
 
 
   <script src="../js/dashboard.js"></script>
