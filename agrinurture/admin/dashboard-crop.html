@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="refresh" content="10"> --> 
+    <title>Crop Dashboard</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    
+    <div class="sidebar close">
+       <!-- ======Logo====== -->
+        <a href="#" class="logo-box">
+            <img src="../image/smaller pixels.png" alt="logo">
+            <div class="logo-name">Agrinurture</div>
+        </a>
+        
+            <!-- List  -->
+        <ul class="sidebar-list">
+            
+             <li>
+                 <div class="title">
+                    <a href="dashboard-crop.html" class="link">
+                        <i class='bx bxs-grid-alt'></i>
+                        <span  class="name">Dashboard</span>
+                    </a>
+                    
+                 </div>
+             </li>
+             <li>
+                <div class="title" id="upload">
+                   <a href="upload.html" class="link">
+                    <i class='bx bxs-plus-circle'></i>
+                       <span class="name">Upload</span>
+                   </a>
+                   
+                </div>
+            </li>
+            <li>
+                <div class="title">
+                   <a href="#" class="link">
+                    <i class='bx bxs-file-pdf'></i>
+                       <span  class="name">Documents</span>
+                   </a>
+                   
+                </div>
+            </li>
+            <li>
+                <div class="title">
+                   <a href="#" class="link">
+                    <i class='bx bxs-videos'></i>
+                       <span  class="name">Videos</span>
+                   </a>
+                   
+                </div>
+            </li>
+            <li>
+                <div class="title" id="delete">
+                   <a href="#" class="link">
+                    <i class='bx bxs-trash-alt' ></i>
+                       <span  class="name">Delete</span>
+                   </a>
+                   
+                </div>
+            </li>
+            <li>
+                <div class="title" id="logout">
+                   <a href="#" class="link">
+                    <i class='bx bxs-log-out'></i>
+                       <span  class="name">Logout</span>
+                   </a>
+                   
+                </div>
+            </li>     
+        </ul>
+    </div>
+   
+      <!-- ==========Home Section========= -->
+      <section class="home">
+            <div class="toggle-sidebar">
+                <i class='bx bx-menu'></i>
+                <div class="text">Crop Dashboard</div>
+            </div>
+      </section>
+
+       <!-- ==========Dashboard Container-Content========= -->
+    <section class="content-container">
+        <div class="content-box">
+           <div><h3>Documents</h3></div>
+          
+           <div class="box">
+                <div class="box-container">
+                    <h2>17</h2>
+                </div>
+                <div class="box-image" id="pdf">
+                    <img src="../image/documentation.png" alt="Document">
+                </div>    
+           </div>          
+        </div>
+        
+        <div class="content-box">
+            <div><h3>Videos</h3></div>
+           
+            <div class="box">
+                 <div class="box-container">
+                    <h2>10</h2>
+                 </div>
+                 <div class="box-image" id="video">
+                    <img src="../image/youtube.png" alt="Video">
+                 </div>    
+            </div>          
+         </div>  
+    </section>
+    
+
+    
+      <script src="../js/dashboard.js"></script>
+</body>
+</html>
