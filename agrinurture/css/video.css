@@ -1,0 +1,149 @@
+
+
+
+.search-bar{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%; /* Ensures it can grow */
+   
+}
+
+.search-bar-button{  
+    padding: 10px 10px;
+    width: 100%;
+    max-width: 130px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+.search-bar-search{
+    margin: 10px;
+    padding: 10px 10px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    border-color: 3px solid #000000;
+    color: #000;
+    font-style: italic;
+}
+
+
+
+.video-list{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    gap: 10px;
+  
+    
+}
+
+.video-item{
+    padding: 5px;
+    margin: 10px;
+    width: 450px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.video-item:hover{
+   transform: scale(1.1);
+   cursor: pointer;
+
+}
+
+.video-list p{
+    font-size: 1.4rem;
+}
+
+.video-item iframe{
+    width: 450px;
+    height: 315px;  
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+/* Media Queries */
+
+/* Tablet Media and Small Screen Queries */
+@media (max-width: 768px) {
+
+    .search-bar{
+        padding-top: 80px;
+    }
+
+    .search-bar-search{
+        width: 70%;
+    }
+
+    .video-list{
+        flex-direction: row;
+        justify-content: center;
+        max-width: 768px; 
+    }
+
+    .video-item{
+        margin: 0;      
+        padding: 15px 15px 30px 15px ;   
+        width: 100%;
+       
+    }
+
+    .video-item iframe{
+        width: 100%; 
+        height: 380px;   
+        border-radius: 5px;  
+    }
+
+    .video-list p{
+        font-size: 1.4rem;
+    }
+}
+
+
+
+
+
+
+
+/* Mobile Media Queries */
+@media (max-width: 480px) {
+
+    .search-bar{
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .search-bar-button{
+        padding: 7px 7px;
+    }
+
+    .video-item iframe{
+       height: 210px; 
+    }
+    .video-list p{
+        font-size: 1rem;
+    }
+
+}
+
+
+
+
+
+

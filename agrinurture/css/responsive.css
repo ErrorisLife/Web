@@ -1,0 +1,491 @@
+
+/* Media Queries */
+
+/* Tablet Media and Small Screen Queries */
+@media (max-width: 780px) {
+
+
+    nav{
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 10;
+   }
+   .logo-holder img{
+         display: none;
+    }
+    .holder h3{
+        padding-top: 7px;
+     }
+
+   nav ul {
+       position: fixed;
+       width: 100%;
+       height: 60vh;
+       background: #000000b4;
+       top: 71px;
+       left: -100%;
+       text-align: center;
+       transition: all .5s;
+       flex-direction: column;
+       transition: .5s ease;
+   }
+
+   nav ul li {
+       display: block;
+       margin: 20px 0;
+       line-height: 15px;
+   }
+
+   nav ul li a {
+       font-size: 20px;
+   }
+
+   .checkbtn {
+       display: block;
+   }
+
+   #check:checked ~ ul {
+       left: 0;
+   }
+
+
+   .content h3 {
+       font-size: 3rem;
+   }
+
+
+   .text-picture-container {
+       flex-direction: column;
+       text-align: center;
+   }
+
+   .text {
+       margin-right: 0;
+       margin-bottom: 20px;
+       text-align: justify;
+   }
+
+
+
+   .videoHolder iframe{
+        height: 400px;
+    }
+
+    .videoHolder {
+        max-width: 100%;
+    }
+
+    .videoHolder p {
+        font-size: 14px;
+        padding: 10px;
+        padding-bottom: 30px;
+    }
+
+    .videoHolder button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+
+
+
+   .footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-logos,
+    .footer-right {
+        justify-content: center;
+        flex-direction: row;
+        padding: 5px 15px;
+    }
+
+    .menu {
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .social-icon {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .footer p {
+        margin-top: 10px;
+    }
+
+
+    /*Contact Main Page 768px */
+    
+    .contact-header{
+        padding: 80px 20px 48px 20px;
+        margin: 5px;
+        z-index: 5;
+        height: 15vh;
+        background-color: #fff;
+    }
+
+
+     /* About Main Page */
+
+    .about-first-section{
+        padding: 50px 20px;
+    }
+
+     .first-section{
+        height: 60vh;
+    }
+
+   .first-content h1 {
+        padding: 40px 10px;
+       font-size: 2.4rem;
+   }
+
+   .first-content p {
+       padding-top: 20px;
+       font-size: 1.5rem;
+   }
+
+
+   
+   .content-container {
+       flex-direction: column;
+   }
+
+   .image-container,
+   .text-container {
+       flex: 1 1 100%;
+       max-width: 100%;
+   }
+
+   .text-container {
+       padding: 20px;
+   }
+
+
+   .text-container p{
+       font-size: 1rem;
+   }
+
+
+   
+   .about-third-section {
+       flex-direction: row; /* Align sections horizontally on larger screens */
+       justify-content: space-between; 
+       gap: 3px; /*  Adjust spacing between sections */
+   }
+
+   .mission p{
+       font-size: 1.3rem;
+   }
+   .values p{
+       font-size: .9rem;
+   }
+
+   .mission, .values {
+       flex: 1; /* Make sections take up equal width */
+       padding: 15px; 
+       background-color: #f9f9f9; 
+       border-radius: 8px; 
+   }
+   
+   .mission h2, .values h2 {
+       margin-top: 0; 
+       font-size: 1.8rem;
+   }
+   
+   .offer-section p{
+       padding-left: 45px;
+       padding-right: 45px;
+   }
+   
+   .offer-card {
+       width: 80%;
+   }
+
+
+   .team-container {
+       gap: 20px;
+   }
+
+   .team-member {
+       width: 80%;
+       margin-bottom: 20px;
+   }
+
+
+   .contact-section {
+       padding: 15px;
+       margin: 20px 40px 20px 40px;
+   }
+
+   .contact-section h2 {
+       font-size: 26px;
+   }
+
+   .contact-section p {
+       font-size: 19px;
+   }
+
+   .contact-button {
+       padding: 8px 14px;
+       font-size: 17px;
+       width: 27%;
+   }
+
+    
+}
+
+
+
+
+
+
+/* Mobile Media Queries */
+@media (max-width: 480px) {
+
+    .holder h3{
+        padding-top: 7px;
+     }
+
+   nav ul {  
+       height: 48vh;  
+       top: 64px;
+   }
+
+   nav h3 {
+       font-size: 1.8rem;
+   }
+
+   nav ul li a {
+       font-size: 20px;
+   }
+
+   nav ul li button {
+       font-size: 1rem;
+       padding: 0.4rem 0.8rem;
+   }
+
+   #login{
+    display: none;
+   }
+
+
+
+   .slogan-container{
+    height: 50vh;
+   }
+
+   .content h3 {
+       font-size: 2rem;
+       -webkit-text-stroke: 1.4px #000
+   }
+
+
+
+   .heading h2 {
+       font-size: 2rem;
+   }
+
+   
+   .text p {
+      font-size: 1rem;
+   }
+
+   button{
+       font-size: 1.2rem;
+       width: 40%;
+   }
+
+
+
+
+   .videoHolder iframe{
+    height: 260px;
+}
+
+    .videoHolder {
+        max-width: 100%;
+    }
+
+    .videoHolder p {
+        font-size: 13px;
+        padding: 4px;
+        padding-bottom: 30px;
+    }
+
+    .videoHolder .vidButton {
+        font-size: 15px;
+        padding: 8px 15px;
+    }
+
+   .description{
+       font-size: 1rem;
+   }
+   
+
+
+  
+   .footer-logos img {
+        max-width: 50px;
+    }
+
+    
+    .menu__link{
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 15px;
+    }
+
+    .social-icon__link {
+        color: #fff; 
+        font-size: 50px;
+        
+    }
+
+    .footer p {
+        font-size: 10px;
+    }
+
+    .contact-header{
+        padding: 80px 20px 34px 20px;
+    }
+    .contact-header h1{
+        font-size: 2rem;        
+    }
+  
+
+    /* About Main Page */
+    .first-section{
+        height: 90vh;
+    }
+   
+    .first-content h1 {
+       font-size: 2rem;
+   }
+
+   .first-content p {
+       font-size: 1.1rem;
+       padding-top: 10px;
+   }
+
+   .text-container .s2-about{
+       font-size: 1.7rem;
+   }
+
+   .image-container img{
+       display: none;
+   }
+
+   .text-container p{
+       font-size: .9rem;
+
+   }
+
+
+    .about-third-section {
+       padding-top: 40px;
+       flex-direction: column;
+       gap: 25px;
+       
+   }
+
+   .mission, .values {
+       padding: 15px; 
+       margin: 0;
+   }
+
+
+   .offer-card {
+       width: 100%;
+       margin-bottom: 20px;
+   }
+
+
+   .team-member {
+       width: 100%;
+   }
+
+   .contact-section {
+       padding: 15px;
+       margin: 20px 20px 20px 20px;
+   }
+
+   .contact-section p {
+    font-size: 16px;
+    }
+
+   .contact-button{
+       padding: 10px 14px;
+       font-size: 16px;
+       width: 50%;
+   }
+}
+
+
+
+
+/* Responsive Query of Contact Us on Small Devices */
+
+@media (min-width: 600px) {
+    .contact-container {
+        flex-direction: row;
+    }
+
+    .form-section, .profile-section {
+        flex: 1;
+        padding: 40px;
+    }
+
+    .form-section {
+        border-right: 1px solid #ddd;
+    }
+    button {
+        width: 40%;
+        font-size: 20px;
+    }
+
+    /* Main Contact Section */
+    
+
+   
+}
+
+
+
+@media (max-width: 599px) {
+
+    h1 {
+        font-size: 25px;
+    }
+
+    input, textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+    .form-section{
+        padding-bottom: 20px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 14px;
+        
+    }
+
+    .profile-section h2 {
+        font-size: 1.5rem;
+        color: #000;
+        
+    }
+
+    .profile-section p {
+        font-size: .8rem;
+        color: #000;
+    }
+    
+}
