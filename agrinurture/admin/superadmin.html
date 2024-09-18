@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="refresh" content="10"> --> 
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    
+    <div class="sidebar close">
+       <!-- ======Logo====== -->
+        <a href="#" class="logo-box">
+            <img src="../image/smaller pixels.png" alt="logo">
+            <div class="logo-name">Agrinurture</div>
+        </a>
+
+        <!-- ======Profile====== -->
+        <div class="profile-section">
+            <img src="profiles/Weng.jpg" alt="Admin" class="profile-pic">
+            <h3>Admin</h3>
+        </div>
+        <!-- ======Menu====== -->
+        <ul class="sidebar-list">     
+             <li>
+                 <div class="title" >
+                    <a href="" class="link" id="adminDashboard" >
+                        <i class='bx bxs-grid-alt'></i>
+                        <span  class="name">Dashboard</span>
+                    </a>
+                    
+                 </div>
+             </li>
+             <br><br>
+             <li >
+                <div class="title" >
+                   <a href="#" class="link" >
+                    <i class='bx bxs-user-account'></i>
+                       <span  class="name">Active Admin</span>
+                   </a>
+                </div>
+            </li> 
+            <li >
+                <div class="title" >
+                   <a href="#" class="link" >
+                    <i class='bx bxs-user-plus'></i>
+                       <span  class="name">New Account</span>
+                   </a>
+                </div>
+            </li> 
+            <li >
+                <div class="title" >
+                   <a href="#" class="link" >
+                    <i class='bx bxs-user-detail'></i>
+                       <span  class="name">Manage Users</span>
+                   </a>
+                </div>
+            </li> 
+            <li >
+                <div class="title" >
+                   <a href="#" class="link" >
+                    <i class='bx bxs-cog'></i>
+                       <span  class="name">Setting</span>
+                   </a>
+                </div>
+            </li> 
+          
+            <li>
+                <div class="title" >
+                   <a href="#" class="link" id="logout">
+                    <i class='bx bxs-log-out'></i>
+                       <span  class="name">Logout</span>
+                   </a>
+                   
+                </div>
+            </li>     
+        </ul>
+    </div>
+   
+      <!-- ==========Home Section========= -->
+      <section class="home">
+            <div class="toggle-sidebar">
+                <i class='bx bx-menu'></i>
+                <div class="text">Admin</div>
+            </div>
+      </section>
+
+    <!-- ==========Dashboard Container-Content========= -->
+    <section class="admin-container">
+        <div class="content-box">
+           <div><h3>Documents</h3></div>
+          
+           <div class="box">
+                <div class="box-container">
+                    <h2>17</h2>
+                </div>
+                <div class="box-image" id="pdf">
+                    <img src="../image/documentation.png" alt="Document">
+                </div>    
+           </div>          
+        </div>
+        
+        <div class="content-box">
+            <div><h3>Videos</h3></div>
+           
+            <div class="box">
+                 <div class="box-container">
+                    <h2>10</h2>
+                 </div>
+                 <div class="box-image" id="video">
+                    <img src="../image/youtube.png" alt="Video">
+                 </div>    
+            </div>          
+         </div>  
+    </section>
+
+
+    <section class="new-admin-container">
+        <div class="new-container">
+
+            <form action="" method="post" enctype="multipart/form-data">    
+                <div class="text"><h2>Create Account</h2></div>
+                <div class="admin-content">
+                   
+                        <div class="col">                          
+                                <input type="text" placeholder="Username" class="Username" id="Username" required>
+                                <input type="password" placeholder="Password" class="Password" id="Password" required>
+                                <input type="password" placeholder="Confirm Password" class="Confirm-Password" id="Confirm-Password" required>                            
+                        </div>
+            
+                        <div class="col">                               
+                                <input type="text" placeholder="Name" class="name" id="name" required>
+                                <input type="email" placeholder="Email" class="email" id="email" required>
+                                <input type="file" id="image" name="image" accept="image/*" required>                            
+                        </div> 
+                            
+                </div>
+
+                    <div class="text"><h2>Admin Role</h2></div>
+                    <div class="radioButton">                        
+                            <label>
+                                <input type="radio" class="admin-role" name="admin-role" value="Admin" required> Admin
+                            </label>
+                            <label>
+                                <input type="radio" class="admin-role" name="admin-role" value="Crop" required> Crop
+                            </label>
+                            <label>
+                                <input type="radio" class="admin-role" name="admin-role" value="Livestock" required> Livestock
+                            </label>                        
+                    </div>
+
+                    <div class="createButton">
+                        <button  type="submit">Create</button>
+                    </div>
+            </form>       
+        </div>  
+       
+    </section>
+
+   
+  
+
+    
+
+    <script type="module"  src="../js/admin.js"></script>
+</body>
+</html>
+
+
