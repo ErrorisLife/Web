@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $admin['password'])) {
             // Password is correct, create a session
            
-            header("Location: dashboard-lvstock.html"); // Redirect to admin dashboard
+            header("Location: index.php"); // Redirect to admin dashboard
             exit();
         } else {
             echo "Incorrect password.";

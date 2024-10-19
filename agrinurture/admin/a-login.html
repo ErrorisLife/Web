@@ -14,36 +14,80 @@
 </head>
 <body>
 
-    <div class="signup-container">
+    <div class="signup-container" id="signup-container" > 
+            <div class="closeButton">
+               <a href="../index.php"> <span><i class="fa-solid fa-circle-xmark"></i></span> </a>
+            </div>
         <h2>Welcome!</h2>
         
         <form  method="POST" action="authenticate.php">
-            <div class="input-group">
-                <label for="Username">
-                    <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input type="text" id="username"  placeholder="Username" name="username" required>
-                </label>
-            </div>
-            <div class="input-group">
-                <label for="password">
-                    <span class="icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </label>
-            </div>
-
-            <div class="forgot">
-                <div class="block">
-                    <input type="checkbox" class="showpass" id="showpass"> Show Password
+                <div class="input-group">
+                    <label for="Username">
+                        <span class="icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input type="text" id="username"  placeholder="Username or Email" name="username" required>
+                    </label>
                 </div>
-                <div class="block">
-                    <a href="forgotpass.html">Forgot Password?</a>
+                <div class="input-group">
+                    <label for="password">
+                        <span class="icon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </label>
+                </div>
+
+                <div class="forgot">
+                    <div class="block">
+                        <input type="checkbox" class="showpass" id="showpass"> Show Password
+                    </div>
+                    <div class="block">
+                        <a href="forgotpass.html">Forgot Password?</a>
+                    </div>
+                    
                 </div>
                 
-            </div>
-             
-            <button type="submit" value="Login" class="signup-button">Login</button>
+                <button type="submit" value="Login" class="signup-button">Login</button>
+                
         </form>
+        <br>
+        <p class="dontHaveAccount" id="register">Don't have an account? <a href="#">Create Account</a></p>
         
+    </div>
+
+    <div class="register-container" id="register-container">
+        <h2>Create Account</h2>
+            
+            <div class="register-input">
+               
+                <form action="" class="reg-group">
+                    <div class="reg-group">
+
+                        <label for="Email">Email</label>
+                        <input class="cPassword" type="email" id="email"  placeholder="Email" name="email" required>
+
+                        <label for="Password">Password</label>
+                        <input class="cPassword" type="password" id="createpassword"  placeholder="Password" name="password" required>
+
+                        <label for="Con-Pass">Confirm Password</label>
+                        <input class="Confirm" type="password" id="confirmpassword"  placeholder="Confirm Password" name="confirmpassword" required>
+                        
+                        <div class="check" id="check">
+                            <input type="checkbox" id="showpassWord"> Show Password
+                        </div>
+                       <br>
+                        <label for="Fullname">Fullname</label>
+                        <input class="cPassword" type="text" id="fullname"  placeholder="Name" name="fullnames" required>
+
+                        <label for="Address">Address</label>
+                        <input class="Confirm" type="text" id="addres"  placeholder="Address" name="addres" required>
+                             
+                    </div>
+
+                    <div class="btnGroup">
+                        <button class="register" type="button">Create</button> <button id="cancel" class="cancel" type="button">Cancel</button>
+                    </div>
+
+                </form>
+                
+            </div>
     </div>
 
 
