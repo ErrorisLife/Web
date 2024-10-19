@@ -44,12 +44,15 @@ body {
  */
 nav {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem 5%;
-    background-color: #373737;
-    position: relative;
+    background-color: #322C2B;
+    position: fixed;
     width: 100%;
+   
+   
 }
 
 /**
@@ -60,11 +63,12 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    
+    flex-direction: start;
  }
 
  .holder{
     width: 100%;
+    margin-right: 8px;
  }
  .holder h3{
     margin: 0;
@@ -72,7 +76,7 @@ nav {
  }
 
  .logo-holder img{
-    width: 110px;
+    width: 80px;
  }
 
  nav a:hover{
@@ -98,40 +102,48 @@ nav h3 span:hover {
 /* Styling of Navigation Links */
 nav ul {
     display: flex;
-    align-items: center;
+    
+   
 }
 
 nav ul li {
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
+    padding: 5px 10px;
 }
 
 nav ul li a {
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    transition: color 0.3s ease;
-   
 }
 
 nav ul li a:hover {
-    color: yellow;  
+    color: #fff;
+    padding: 5px 10px; 
+    background-color: #218838;
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+   transition: all 0.5s ease;
 }
 
 
 
 /* Styling of Login Button */
-#login{
+ #doc, #vid{
     display: none;
-}
-
-#login:hover{
+ }
+ nav ul .login{
+    background-color: #218838;
     padding: 0.5rem 1rem;
-    transform: scale(1.1);
-    background-color: #4a9b51;
-    color: #000;
-    border-radius: 10px;
-    
-}
+    border-radius: 7px;
+    margin-left: 10px;
+ }
+
+ nav ul .login:hover{
+    color: #fff;
+    background-color: #218838
+ }
+
 
 
 /* Styling of the hamburger menu     */
@@ -165,8 +177,9 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     height: 90vh; /* Full height of the viewport */
-    padding: 20px;
-
+    padding: 50px;
+  
+    
 }
 
 .content {
@@ -231,6 +244,24 @@ nav ul li a:hover {
     border-radius: 10px;
 }
 
+
+/* Public Announcement Interface */
+.second-container .Title h2{
+    text-align: center;
+}
+.second-container .timePosted{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+.second-container .content{
+    text-align: left;
+    
+}
+
+.second-container .content p{
+    margin: 10px;
+    
+}
 
 /* Button Styling */
 button {
@@ -465,17 +496,18 @@ button:hover {
 }
 
 .profile-section img {
-    width: 230px;
-    height: 230px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     margin-bottom: 20px;
     border: 4px solid #218838;
 }
 
 .profile-section h2 {
-    margin: 10px 0;
+    margin: 5px 0;
     font-size: 2.5rem;
     color: #000;
+    padding: 0;
 }
 
 .profile-section p {
@@ -584,10 +616,13 @@ button:hover {
 
 .menu__link:hover{
     color: #000;
+    padding: 5px 10px;
+    background-color: #ffff00;
+    border-radius: 5px;
 }
 
 .social-icon__link:hover {
-    color: #1754ef; /* Change to your preferred hover color */
+    color: #040404; /* Change to your preferred hover color */
 }
 
 .footer p {
@@ -628,10 +663,12 @@ button:hover {
     font-size: 2.9rem;
     margin-bottom: 20px;
     color: #000;
+    
 }
 
 .first-content h1 span {
-    color: #fff;  
+    color: #fff; 
+    -webkit-text-stroke: .1rem #000 
 }
 
 .first-content p {
@@ -685,8 +722,9 @@ button:hover {
 
 .text-container h2 {
     font-size: 2.5rem;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
      color: #000;
+     padding: 0px;
 }
 
 .text-container span{
@@ -697,7 +735,8 @@ button:hover {
     font-size: 1.3rem;
     margin-bottom: 20px;
     line-height: 1.6; 
-     color: black;
+    color: black;
+    text-align: justify;
 }
 
 
@@ -711,17 +750,17 @@ button:hover {
     max-width: 100%;
     float: center;
   }
-  
-  
+
   .mission, .values {
-    background-color: #f0f0f0;
+    background-color: none;
     padding: 60px;
-    border-radius: 5px;
-    margin: 20px;
+    border-radius: 9px;
+    margin: 10px;
   }
   
   .values p{
       font-size: 1.2rem;
+      text-align: justify;
   }
   
   .mission p{
@@ -740,7 +779,7 @@ button:hover {
     padding: 0;
   }
   
-  li {
+ .values li {
     margin-bottom: 10px;
   }
   
@@ -827,7 +866,7 @@ button:hover {
   }
   
   .team-member {
-      text-align: center;
+     
       width: 280px;
       padding: 20px;
       background-color: #ffffff;
@@ -848,11 +887,13 @@ button:hover {
       font-size: 1.2em;
       margin-bottom: 10px;
       font-weight: bold;
+      text-align: center;
   }
   
   .team-member p {
       font-size: 1em;
       color: #000;
+      text-align: left;
   }
   
   .contact-section {
@@ -861,7 +902,7 @@ button:hover {
       text-align: start;
       margin: 20px 100px 20px 100px;
       border-radius: 10px;
-      
+      text-align: left;
   }
   
   .contact-section h2 {
@@ -903,6 +944,10 @@ button:hover {
        background-color: #4a9b51;
        transition: .9s;
        color: #fff;
+  }
+
+  .copyright p{
+    margin-top: 0;
   }
 
  

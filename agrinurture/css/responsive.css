@@ -248,6 +248,13 @@
 /* Mobile Media Queries */
 @media (max-width: 480px) {
 
+    .document-list {
+        margin: auto;
+         gap: 20px;
+         
+     }
+
+
     .holder h3{
         padding-top: 7px;
      }
@@ -271,7 +278,7 @@
    }
 
    #login{
-    display: none;
+    display: block;
    }
 
 
@@ -404,6 +411,9 @@
        width: 100%;
        margin-bottom: 20px;
    }
+   .offer-card p{
+      padding-left: 0px;
+   }
 
 
    .team-member {
@@ -424,6 +434,12 @@
        font-size: 16px;
        width: 50%;
    }
+
+
+
+
+   
+
 }
 
 

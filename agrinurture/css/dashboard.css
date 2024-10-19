@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;800;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;800;900&display=swap'); 
 
 * {
     margin: 0;
@@ -11,7 +11,7 @@
 }
 
 :root{
-    --main-color:#40F88A;
+    --main-color: #ababab;
     --text-color: #100f0f;
     --hover-color: #fff;
     --h2-font:2rem;
@@ -24,10 +24,11 @@
 }
 
 body{
-  background-color: #fff;
+  background-color: #ffffff;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-/* =========== sidebar */
+/* =========================== sidebar ========================= */
 .sidebar{
   position: fixed;
   top: 0;
@@ -37,12 +38,15 @@ body{
   height: 100vh;
   background: var(--main-color);
   transition: all .5s ease;
+  padding-left: 5px;
+  transition: all .24 ease;
 }
 
 .sidebar.close{
   top: 0;
-  width: 80px;
+  width: 90px;
   position: fixed;
+ 
 }
  
 
@@ -66,9 +70,10 @@ body{
   padding-top: 10px;
 }
 
-/* ============== Submenu Close ========= */
+/* ============================= Submenu Close ====================== */
 .sidebar.close .logo-name, .sidebar.close .title .name{
   display: none;
+  transition: all .10 ease;
 }
 
 .logo-box img{
@@ -78,7 +83,7 @@ body{
 }
 
 
-/* =========== sidebar list ======= */
+/* ======================== sidebar list ========================= */
 
 .sidebar-list {
   margin-top: 10px;
@@ -88,7 +93,8 @@ body{
 }
 
 .sidebar-list li{
-  transition: all .5s ease;
+  transition: all .10s ease;
+  
 }
 
 
@@ -99,15 +105,17 @@ body{
   
   .bxs-grid-alt, .bxs-plus-circle, .bxs-file-pdf, .bxs-videos, .bxs-user-account,
   .bxs-user-plus, .bxs-user-detail, .bxs-cog {
-    color: blue;
+    transform:scale(.7)
+  }
+  .bxs-report{
+    transform:scale(.7)
   }
 
   .bxs-trash-alt, .bxs-log-out{
     color: red;
+    transform:scale(.7)
   }
 }
-
-
 
 
 #upload{
@@ -118,7 +126,7 @@ body{
 }
 #logout {
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   width: 100%; ;
 }
 
@@ -140,6 +148,7 @@ body{
 .sidebar-list li .title .link{
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .sidebar-list li .title i{
@@ -153,7 +162,7 @@ body{
 }
 
 .sidebar-list li .title .name{
-  font-size: var( --p-font);
+  font-size: var(--font);
   font-weight: 400;
   color: var(--text-color);
 
@@ -161,7 +170,28 @@ body{
 
 
 
-/* ================= Home Section ================== */
+/* =============================== Profile Pic ================================== */
+.profile-section {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.sidebar.close .profile-section{
+  display: none;
+}
+
+
+
+
+/* ================================== Home Section ============================== */
 .home{
   position: fixed ;
   background-color: var(--main-color);
@@ -169,12 +199,12 @@ body{
   min-width: calc(100% - 260px);
   transition: all .5s ease;
   width: 100%;
- 
+  top: 0;
 }
 
 .sidebar.close ~ .home{
-  left: 80px;
-  width: calc(100% - 80px);
+  left: 90px;
+  width: calc(100% - 90px);
 }
 
 .home .toggle-sidebar{
@@ -183,6 +213,7 @@ body{
   align-items: center;
   width: fit-content;
   cursor: pointer;
+  transition: all .24 ease;
 }
 
 .home .toggle-sidebar i{
@@ -191,9 +222,10 @@ body{
   transition: all .5s ease;
   margin-left: 15px;
   cursor: pointer;
+  transition: all .24 ease;
 }
-.home .toggle-sidebar i:hover{
-  color: blue;
+.home .toggle-sidebar i:hover {
+  transform:scale(.9)
 }
 
 
@@ -202,89 +234,107 @@ body{
   color: var(--text-color);
   font-weight: 500;
   margin-left: 15px;
-
 }
 
 
-/* =============== content-container ================== */
-.content-container{
+
+ /* ================================== Admin Dashboard Content Container ======================= */
+ .admin-container{
   position: fixed;
   left: 260px;
   min-width: calc(100% - 260px); 
   transition: all .5s ease;
-  margin: 70px 25px 25px 30px;
-  padding: 10px;
- 
+  margin: 100px 25px 25px 30px;
+  
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap; 
-  gap: 70px;
-  height: auto;
- 
-  display: none;
+  gap: 30px;
+
+/*  display: none;  Default */
 }
 
 
-.sidebar.close ~ .content-container{
-  left: 80px;
-  width: calc(100% - 80px);
+.sidebar.close ~ .admin-container{
+  left: 90px;
+  width: calc(100% - 90px);
+
+  
 }
 
-.content-container .content-box{
-  width: 35%;
+.admin-container .content-box{
+  width: 27%;
   padding: 10px;
-  background-color: #000000d6;
+  background-color: #40F88A;
   border-radius: 16px;
-  margin-top: 10px;
+  margin-left: 30px;
+  gap: 0;
 }
+.admin-container .content-box:hover{
+  outline: 3px solid #17171f;
+}
+
 
 .content-box h3{
   margin-left: 10px;
-  font-size: 1.7rem;
-  color: var(--main-color);
+  font-size: 1.5rem;
+  color: var(--text-color);
 }
 
 .content-box .box{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   margin-bottom: 10px;
   flex-wrap: wrap;
   gap: 50px;
 }
 
 .content-box .box-container{
-  height: 20vh;
-  width: 35%;
-  margin-top: 15px;
+  height: 10vh;
+  width: 85px;
+  border: 4px solid #141313;
+  margin-top: 25px;
   margin-left: 15px;
-  background-color: var(--main-color);
-  border-radius: 16px;
+  margin-right: 25px;
+  background-color: var(--hover-color);
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .box-container h2{
-  font-size: 5rem;
+  font-size: 2.7rem;
   color: var(--text-color);
 }
 
-.content-box .box-image{
-  height: 20vh;
-  width: 38%;
+
+/* ========================================= Upload CSS ================================ */
+
+.upload-container .group{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 80px;
+  padding-left: 0;
+  display: none;
 }
 
-.box-image img{
-  width: 80%;
-  margin-left: 20px;
-  margin-bottom: 25px;
-  align-items: center;
-  text-align: center;
+.upload-container  .group button{
+  margin: 10px;
+  width: 100%;
+  padding: 16px 20px;
+  width: 100%;
+  border-radius: 12px;
+  font-size: var(--p-font);
+  background-color: #40F88A;
+  cursor: pointer;
+
 }
-
-
-/* ============ Upload CSS ============ */
+.upload-container  .group button:hover{
+  background-color: var(--main-color);
+}
 
 .upload-container{
   position: absolute;
@@ -299,21 +349,21 @@ body{
 }
 
  .sidebar.close ~ .upload-container{
-  left: 80px;
-  width: calc(100% - 80px);
+  left: 90px;
+  width: calc(100% - 90px);
 } 
 
 .upload-box{
   text-align: center;
-  max-width: 700px;
-  width: 100%;
-  min-height: 435px;
-  background-color: #40F88A;
+  width: 95%;
+  min-height: 450px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   border-radius: 16px;
   padding: 20px;
-  margin-top: 90px;
+  margin-top: 40px;
   
-  
+  z-index: 1;
   display: none;
 }
 
@@ -381,7 +431,7 @@ body{
 .drop-section .icon{
   font-size: 6rem;
   margin-top: 10px;
-  color: #ffffff;
+  color: #191818;
 }
 
 .drop-section span, .drop-section button{
@@ -391,11 +441,11 @@ body{
 }
 
 .drop-section button{
-  background-color: #17171f;
+  background-color: var(--text-color);
   color: #fff;
   border: none;
   font-size: 1rem;
- 
+  font-weight: 500;
   padding: 10px 20px;
   border-radius: 5px;
   margin-top: 15px;
@@ -406,8 +456,6 @@ body{
 .drop-section input{
   display: none;
 }
-
-
 
 
 .list-section{
@@ -521,63 +569,441 @@ body{
     display: none; 
  }  
 
+ /* =========================== Admin Interface for Announcement ========================== */
+ .announcement{
+    width: 95%;
+    min-height: 450px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+ }
+
+.announcement .innerbox{
+  margin:  auto;
+  width: 95%;
+  align-items: center;
+}
+.announcement .innerbox .boxed{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 10px;
+  
+}
+.announcement .innerbox .boxed label{
+  display: block;
+  margin: 5px;
+  font-size: 1.2rem;
+}
+.announcement  .boxed input {
+ width: 98%;
+ margin: 5px;
+ margin-right: 20px;
+ padding: 12px 20px;
+ border-radius: 10px;
+ margin-bottom: 20px;
+}
+
+.announcement  .boxed textarea {
+  max-width: 98%;
+  min-width: 98%;
+  margin: 5px;
+  margin-right: 20px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  max-height: 320px;
+  max-height: 100px;
+  margin-bottom: 20px;
+  border: 2px solid #100f0f;
+}
+ .announcement  .innerbox .category{
+  width: 98%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 10px;
+ }
+ .announcement .btnPost {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  margin-left: 20px;
+ }
+ 
+ .announcement .btnPost  button{
+  padding: 12px 24px;
+  border-radius: 15px;
+  border: 3px solid #100f0f;
+  background: #40F88A;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all .8 ease;
+  width: 20%;
+ }
+ .announcement .btnPost button:hover{
+  background-color: var(--main-color);
+ }
+
+
+.announcement h3{
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
   
 
+/* ================================== User Management styling ============================== */
+.userManagement-container{
+  position: absolute;
+  left: 260px;
+  min-width: calc(100% - 260px); 
+  transition: all .5s ease;
+  margin: 80px 20px 20px 20px;
+ 
+  z-index: -1;
+
+  display: none;
+}
+
+.sidebar.close ~ .userManagement-container{
+  left: 90px;
+  width: calc(100% - 90px);
+
+  .userManagement{
+    width: 95%;
+  }
+}
+
+.userManagement {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+.userManagement .btnGroup{
+ margin: 20px;
+ width: 100%;
+
+}
+.userManagement .btnGroup button{
+  padding: 16px 20px;
+  width: 100%;
+  border-radius: 12px;
+  font-size: var(--p-font);
+  background-color: #40F88A;
+  cursor: pointer;
+ }
+ .userManagement .btnGroup button:hover{
+  background-color: var(--main-color);
+ }
+
+ .searchManagement{
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+ }
+ .searchManagement .btnGroup{
+  width: 100%;
+  margin-bottom: 20px;
+ }
+ .searchManagement .btnGroup .searcher{
+  width: 91%;
+  padding: 12px 24px;
+  border-radius: 7px;
+  margin-left: 21px;
+ }
+ 
+ 
+ .searchManagement .btnGroup button{
+  width: 30%;
+  padding: 12px 24px;
+  border-radius: 7px;
+  background-color: yellow;
+  font-size: 1.1rem;
+  cursor: pointer;
+ }
+ .searchManagement .btnGroup button:hover{
+  background-color: var(--main-color);
+ }
+
+ 
+
+/* ========================= Register New  Client  =============================== */
+
+.register-container{
+  width: 92%;
+  margin: auto;
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ 
+  display: none;
+}
+
+.register-container h2{
+  text-align: center;
+  padding-top: 40px; 
+}
+
+.register-input{
+  display: flex;  
+  padding: 30px;
+  padding-bottom: 10px;
+  flex-direction: row;
+}
+
+.register-input .reg-group{
+  flex-direction: column;
+  display: flex;
+}
+.reg-group{
+  width: 100%;
+}
+.reg-group label{
+  display: block;
+  margin-bottom: 5px;
+}
+.reg-group .cPassword{
+  margin-bottom: 25px;
+}
+.reg-group .Confirm{
+  margin-bottom: 5px;
+}
 
 
- /* ============ Admin CSS ============ */
- .admin-container{
-  position: fixed;
+.reg-group .check{
+  margin-left: 5px;
+  font-size: .9rem;
+  cursor: pointer;
+}
+.reg-group input{
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+.btnGroup{
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  gap: 20px;
+}
+.btnGroup button{
+  padding: 12px 40px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btnGroup .register:hover{
+  background-color: #40F88A;
+  border: none;
+  font-weight: 600;
+  outline: 2px solid #000;
+}
+.btnGroup .cancel{
+  background-color: yellow;
+  color: #000;
+
+}
+.btnGroup .cancel:hover{
+  font-weight: 600;
+}
+
+
+
+
+/* ================================== Setting Container ============================== */
+.setting-container{
+  position: absolute;
   left: 260px;
   min-width: calc(100% - 260px); 
   transition: all .5s ease;
   margin: 100px 25px 25px 30px;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
   
+  display: none; /*  Default */
+}
+
+.sidebar.close ~ .setting-container{
+  left: 90px;
+  width: calc(100% - 90px);
+}
+
+
+
+.settings-section{
+  height: 25vh;
+  width: 95%;
+  background-color: var(--main-color);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 25px;
+  
+}
+.settings-section:hover{
+  outline: 3px solid #100f0f;
+}
+.settings-section h3{
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+.settings-section .input-setting{
+  padding-left: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap; 
-  gap: 70px;
 
-  display: none;
 }
 
-
-.sidebar.close ~ .admin-container{
-  left: 80px;
-  width: calc(100% - 80px);
+.settings-section .settingInputGroup{
+  margin: 10px;
+  width: 23%;
+  
 }
-
-.admin-container .content-box{
-  width: 35%;
-  padding: 10px;
-  background-color: #000000d6;
-  border-radius: 16px;
-  margin-left: 30px;
- 
-}
-
-/* ====== Profile Pic ======= */
-.profile-section {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
+.settings-section .input-setting label{
+  display: block;
+  font-size: 1rem;
   margin-bottom: 10px;
+  width: 100%;
+}
+.settings-section .input-setting input{
+  padding: 10px 24px;
+  width: 95%;
+  border-radius: 10px;
+  border: 2px solid #17171f;
+}
+.settings-section .input-setting  button{
+   padding: 12px 24px;
+   margin-left: 50px;
+   margin-top:  25px;
+   border-radius: 20px;
+   border: 3px solid #100f0f;
+   background: #40F88A;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all .8 ease;
+   width: 60%;
+}
+.settings-section .input-setting  button:hover{
+  background: var(--hover-color);
 }
 
-.sidebar.close .profile-section{
-  display: none;
+
+/* ============================= Security Setting =================================== */
+.settings-section .security-setting{
+  padding-left: 30px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+
+}
+.settings-section .security{
+  margin: 10px;
+  width: 50%;
+  
+}
+
+.settings-section label{
+  display: block;
+  margin-bottom: 20px;
+}
+
+.settings-section .security-setting p{  
+  font-size: .9rem;
+  margin: 10px;
+  margin-left: 25px;
+}
+.settings-section .security-setting input{  
+  margin-right: 5px;
+}
+
+.settings-section .securityButton{
+  margin: 10px;
+  width: 50%;
+  margin: auto;
+}
+.settings-section .securityButton button{
+  padding: 12px 24px;
+   margin-left: 0px;
+   border-radius: 20px;
+   border: 3px solid #100f0f;
+   background: #40F88A;
+   font-weight: 600;
+   cursor: pointer;
+   transition: all .8 ease;
+   width: 30%;
+}
+.settings-section .securityButton button:hover{
+  background: var(--hover-color);
+}
+
+/* ============================= Back Up and Restore =================================== */
+.settings-section .backup-setting{
+  padding-left: 30px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  
+}
+.settings-section .backupGroup{
+  margin: 10px;
+  width: 50%;
+}
+.settings-section .backupGroup button{
+  padding: 12px 24px;
+  margin-left: 0px;
+  border-radius: 20px;
+  border: 3px solid #100f0f;
+  background: #40F88A;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .8 ease;
+  width: 30%;
+}
+.settings-section .backupGroup button:hover{
+  background: var(--hover-color);
+}
+
+/* ============================= Help and Support =================================== */
+.settings-section .helpandsupport{
+  padding-left: 30px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.settings-section .help{
+  width: 100%;
+  margin: 10px;  
+}
+.settings-section .help p{
+  margin: 15px;
+  font-size: .9rem;
+}
+.settings-section .help a{
+  color: #003863;
+}
+.settings-section .help a:HOVER{
+  text-decoration: underline solid;
 }
 
 
 
-/* ========== New Admin Container =========== */
+
+
+
+/* ========== Adding New Admin Container =========== */
 
 .new-admin-container{
   position: absolute;
@@ -591,22 +1017,26 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+
+ 
 }
 
 .sidebar.close ~ .new-admin-container{
-  left: 80px;
-  width: calc(100% - 80px);
+  left: 90px;
+  width: calc(100% - 90px);
 
   .new-container{
     width: 70%;
   }
 }
+
 .new-container{
   padding: 2px;
   width: 80%;
   background: var(--main-color);
   border-radius: 16px;
-  display: none;
+  
+   display: none; /*  Default */
 }
 
 .admin-content{
@@ -630,7 +1060,7 @@ body{
   padding-left: 17px;
   padding-right: 10px;
   border-radius: 10px;
-  border: 2px  #100f0f;
+  border: 2px solid #100f0f;
   margin: 10px;
   color: #100f0f;
   font-size: .9rem;
@@ -642,6 +1072,7 @@ body{
   cursor: pointer;
   background-color: #fff;
 }
+
 
 /* ========== RADIO BUTTON ======= */
 
@@ -714,5 +1145,16 @@ body{
  
 }
 
+.error-message {
+  width: 200px;
+  height: 100px;
+  color: red;
+  margin: 20px;
+  font-weight: bold;
+  z-index: 10;
+  background-color: #100f0f;
+
+  display: none;
+}
 
 

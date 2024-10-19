@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="refresh" content="10"> --> 
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+   
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    
+    <div class="sidebar close">
+       <!-- ======Logo====== -->
+        <a href="#" class="logo-box">
+            <img src="../image/smaller pixels.png" alt="logo">
+            <div class="logo-name">Agrinurture</div>
+        </a>
+
+        <!-- ======Profile====== -->
+        <div class="profile-section">
+            <img src="profiles/Fernan.jpg" alt="Admin" class="profile-pic">
+            <h3>Fernan Cabuso</h3>
+        </div>
+        <!-- ======Menu====== -->
+        <ul class="sidebar-list">     
+             <li>
+                 <div class="title" >
+                    <a href="" class="link" id="adminDashboard" >
+                        <i class='bx bxs-grid-alt'></i>
+                        <span  class="name">Dashboard</span>
+                    </a>
+                    
+                 </div>
+             </li>
+             
+             <li>
+                <div class="title"  >
+                   <a href="" class="link" id="upload-link">
+                    <i class='bx bxs-plus-circle'></i>
+                       <span class="name">Upload</span>
+                   </a>
+                   
+                </div>
+            </li>
+
+            <li class="userManage">
+                <div class="title" >
+                   <a href="#" class="link" id="userManagement">
+                    <i class='bx bxs-user-detail'></i>
+                       <span  class="name" > User Management </span>   
+                    </a>
+                          
+                </div>
+               
+            </li> 
+            
+           
+            <li >
+                <div class="title" >
+                   <a href="#" class="link" id="reports">
+                    <i class='bx bxs-report'></i>
+                       <span  class="name">Reports</span>
+                   </a>
+                </div>
+            </li> 
+              
+            <li >
+                <div class="title" >
+                   <a href="#" class="link" id="setting">
+                    <i class='bx bxs-cog'></i>
+                       <span  class="name">Setting</span>
+                   </a>
+                </div>
+            </li> 
+          
+            <li>
+                <div class="title" >
+                   <a href="#" class="link" id="logout">
+                    <i class='bx bxs-log-out'></i>
+                       <span  class="name">Log Out</span>
+                   </a>
+                   
+                </div>
+            </li>     
+        </ul>
+    </div>
+   
+      <!-- ==========Home Section========= -->
+      <section class="home">
+            <div class="toggle-sidebar">
+                <i class='bx bx-menu'></i>
+                <div class="text">Admin</div>
+            </div>
+      </section>
+
+    <!-- ==========Dashboard Container-Content========= -->
+    <section class="admin-container">
+
+        <div class="content-box">
+           <div><h3>Documents</h3></div>
+          
+           <div class="box">
+                <div class="box-container">
+                    <h2>17</h2>
+                </div>
+                  
+           </div>          
+        </div>
+        
+        <div class="content-box">
+            <div><h3>Videos</h3></div>
+           
+            <div class="box">
+                 <div class="box-container">
+                    <h2>10</h2>
+                 </div>
+                   
+            </div>          
+         </div>  
+
+         <div class="content-box">
+            <div><h3>Total of Users</h3></div>
+           
+            <div class="box">
+                 <div class="box-container">
+                    <h2>5</h2>
+                 </div>
+                   
+            </div>          
+         </div>  
+    </section>
+
+  
+     <!-- ======== Upload ======= -->
+     <section class="upload-container">
+
+        <div class="group">
+            <button  class="uploads" id="uploadButton">Upload Files</button>
+            <button  class="posts" id="postButton">Post</button>
+        </div>
+
+        <div class="upload-box" id="upload-box">
+          <div class="header-section">
+               <h1>Upload Files</h1>
+           </div>
+              
+           <div class="drop-section "> 
+               <div class="col">
+                   <div class="icon">
+                       <i class='bx bxs-cloud-upload'></i>
+                   </div>
+                   <span>Drag and Drop your files here</span>
+                   <span>OR</span>
+                   <button  class="file-selector">Browse Files</button>
+                   <input type="file" class="file-selector-input" accept=".docx, .doc, .pdf, .mp4" multiple>
+               </div>
+               <div class="col">
+                   <div class="drop-here">Drop Here</div>
+               </div>
+           </div> 
+           
+           <div class="list-section">
+               <div class="list-title"> Upload Files</div>
+               <div class="list">
+                   <!-- <li class="in-prog">
+
+                       <div class="col">
+                           <img src="../image/pdf.png" alt="file type">
+                       </div>
+
+                       <div class="col">
+                           <div class="file-name">
+                               <div class="name">File Name Here</div>
+                               <span>50%</span>
+                           </div>
+                           <div class="file-progress">
+                               <span></span>
+                           </div>
+                           <div class="file-size"> 2.2 MB</div>                  
+                       </div>
+
+                        <div class="col">    
+                               <svg xmlns="http://www.w3.org/2000/svg" class="cross" height="20" width="20"><path d="m5.979 14.917-.854-.896 4-4.021-4-4.062.854-.896 4.042 4.062 4-4.062.854.896-4 4.062 4 4.021-.854.896-4-4.063Z"/></svg>
+                               <svg xmlns="http://www.w3.org/2000/svg" class="tick" height="20" width="20"><path d="m8.229 14.438-3.896-3.917 1.438-1.438 2.458 2.459 6-6L15.667 7Z"/></svg>
+                       </div>
+                           
+                   </li>   -->
+               </div>
+           </div>
+        </div>
+
+         <!-- ------------------------------------ Admin Interface for Announcement --------------------------------------------- -->
+        <div id="announcement" class="announcement">
+
+            <h3>New Post</h3>
+
+                <div class="innerbox" id="innerbox"> 
+                    <div class="boxed">
+                        <label for="title">Title</label>
+                        <input type="text" name="titleofannouncement" id="title" placeholder=" Title">
+                       
+                        <label for="title">Description</label>
+                        <textarea name="message" placeholder="Description" required></textarea>
+
+                        <label for="title">Category</label>
+                        <select class="category" name="category" id="category">
+                            <option value="Announcement">Announcement</option>
+                            <option value="Update">Update</option>                          
+                            <option value="Event">Event</option>
+                        </select>   
+                    </div>
+                    <div class="btnPost">
+                        <button type="button" id="postAnnouncement"> Post</button>
+                    </div>
+                    
+                </div>
+               
+        </div>
+
+    </section>
+
+  
+
+
+
+   <!-- ------------------------------- User Management ------------------------------- -->
+   <section class="userManagement-container" id="userManagement-container">
+
+        <div class="searchManagement">
+            <div class="btnGroup">
+                <input  class="searcher" id="searcher" type="text" placeholder="Search here...">
+            </div>
+            <div  class="btnGroup">
+                <button  type="button" class="searchAccount">Search</button>
+            </div>
+        </div>
+
+        <div class="userManagement">
+            <div class="btnGroup">
+                <button type="button" id="clientAccount">Register Client</button>
+            </div>
+           
+            <div class="btnGroup">
+                <button type="button" id="editAccounts">Edit</button>
+            </div>
+            <div class="btnGroup">
+                <button type="button" id="deleteAccounts">Delete</button>
+            </div>
+        </div>
+        
+        
+
+
+        <!------------------------------- New User Register  ------------------------------->
+        <div class="register-container" id="register-container">
+            
+            <h2>Register Account</h2>
+          
+                <div class="register-input">
+                   
+                    <form action="" class="reg-group">
+                        <div class="reg-group">
+    
+                            <label for="Email">Email</label>
+                            <input class="cPassword" type="email" id="userEmail"  placeholder="Email" name="email" required>
+    
+                            <label for="Password">Password</label>
+                            <input class="cPassword" type="password" id="UserPassword"  placeholder="Password" name="password" required>
+    
+                            <label for="Con-Pass">Confirm Password</label>
+                            <input class="Confirm" type="password" id="confirmpassword"  placeholder="Confirm Password" name="confirmpassword" required>
+                            
+                            <div class="check" id="check">
+                                <input type="checkbox" id="showpassWord"> Show Password
+                            </div>
+                           <br>
+                            <label for="Fullname">Fullname</label>
+                            <input class="cPassword" type="text" id="fullname"  placeholder="Name" name="fullnames" required>
+    
+                            <label for="Address">Address</label>
+                            <input class="Confirm" type="text" id="addres"  placeholder="Address" name="addres" required>
+                                 
+                        </div>
+    
+                        <div class="btnGroup">
+                            <button class="register" type="button">Create</button> <button id="cancel" class="cancel" type="button">Cancel</button>
+                        </div>
+    
+                    </form>
+                    
+                </div>
+        </div>
+
+       
+   </section>
+
+
+
+   <!------------------------------- Settings  ------------------------------->
+   <section class="setting-container" id="setting-container"> 
+    <h1>Settings</h1>
+        <div class="settings-section">
+            <!-- Account Settings -->
+            <h3>Account Setting</h3>
+            <form action="">
+                    <div class="input-setting">
+                        <div class="settingInputGroup">
+                            <label for="username">Username:</label>
+                            <input type="text" id="accSettingUsername" name="username" value="admin001">
+                        </div>
+                        <div class="settingInputGroup">
+                            <label for="email">Email:</label>
+                            <input type="email" id="accSettingEmail" name="email" value="admin@gmail.com">
+                        </div>
+                        <div class="settingInputGroup">
+                            <label for="password">Change Password:</label>
+                            <input type="password" id="accSettingPassword" name="password" placeholder="New Password">
+                        </div> 
+                        <div class="settingInputGroup">
+                            <button type="submit">Save Change</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+        <div class="settings-section">
+            <!-- Security Settings -->
+            <h3>Security Setting</h3>
+
+            <div class="security-setting">
+                <div class="security" > 
+                     <label for="two-factor">Two-Factor Authentication</label>
+                     <p><input type="radio" name="twoFactor" class="yes" value="Yes"> Yes, enable two-factor authentication.</p>
+                     <p><input type="radio" name="twoFactor" class="no" value="No" checked> No, default. </p> 
+                     
+                </div>
+                <div class="securityButton">
+                    <button type="button">Save Change</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+             <!-- Backup Settings  -->
+            <h3>Backup & Restore</h3>
+
+            <div class="backup-setting">
+                <div class="backupGroup">
+                    <label for="two-factor">Backup and Restore</label>
+                    <button type="button">Create Backup</button>
+                </div>
+                <div class="backupGroup">
+                    <label for="two-factor">Restore from Backup</label>
+                    <button type="button">Restore</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <!-- Help and Support Settings -->
+            <h3>Help and Support</h3>
+
+            <div class="helpandsupport">
+                <div class="help">
+                    <p>If you need any help, feel free to reach out to our support team <a href="" target="_blank">support@agrinurture.com</a></p>
+                    <p>Visit our <a href="" target="_blank"> FAQ</a>  or check the <a href="" target="_blank">User Guides</a>  for quick help.</p>
+                </div>
+                
+            </div>
+        </div>
+
+   </section>
+
+
+   <section class="new-admin-container">
+
+    <div class="new-container">
+
+        <form id="newAdminForm"  enctype="multipart/form-data">    
+            <div class="text"><h2>Create Account</h2></div>
+            <div class="admin-content">
+               
+                    <div class="col">                          
+                            <input type="text" placeholder="Username" name="username" id="username" required>
+                            <input type="password" placeholder="Password" name="password" id="password" required>
+                            <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required>   
+                            
+                            
+                    </div>
+        
+                    <div class="col">                               
+                            <input type="text" placeholder="Name" name="name" id="name" required>
+                            <input type="email" placeholder="Email" name="email" id="email" required>
+                            <input type="file" id="image" name="image" accept="image/*" required>                            
+                    </div> 
+                        
+            </div>
+
+                <div class="text"><h2>Admin Role</h2></div>
+                <div class="radioButton">                        
+                        <label>
+                            <input type="radio" class="admin-role" name="admin-role" value="Admin" required> Admin
+                        </label>
+                        <label>
+                            <input type="radio" class="admin-role" name="admin-role" value="Crop" required> Crop
+                        </label>
+                        <label>
+                            <input type="radio" class="admin-role" name="admin-role" value="Livestock" required> Livestock
+                        </label>                        
+                </div>
+
+                <div class="createButton">
+                    <button id="createAdmin" type="button">Create</button>
+                </div>
+        </form>    
+
+       
+    </div>  
+
+</section>
+
+
+
+
+    <script type="module"  src="../js/admin.js"></script>
+    
+</body>
+</html>
+
+
