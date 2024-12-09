@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+
+
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+        
+
+
+    <div class="register-container" id="register-container" >
+        <div class="closeButton">
+            <a href="a-login.html"> <span><i class="fa-solid fa-circle-xmark"></i></span> </a>
+         </div>
+
+        <h2>Create Account</h2>
+           
+            <div class="register-input">
+               
+                <form action="createaccount.php" method="POST" class="reg-group" autocomplete="on">
+                    <div class="reg-group">
+                        <label for="fullname">Fullname</label>
+                        <input class="cPassword" type="text" id="fullname"  placeholder="Name" name="fullnames"   autocomplete="on" required>
+
+                        <label for="addres">Address</label>
+                        <input class="Confirm" type="text" id="addres"  placeholder="Address" name="addres"  autocomplete="on" required>
+                        <br>
+                        <label for="email">Email</label>
+                        <input class="cPassword" type="email" id="email"  placeholder="abc@gmail.com" name="email"  autocomplete="on" required>
+
+                        <label for="createpassword">Password</label>
+                        <input class="cPassword" type="password" id="createpassword"  placeholder="Password" name="password" required>
+
+                        <label for="confirmpassword">Confirm Password</label>
+                        <input class="Confirm" type="password" id="confirmpassword"  placeholder="Confirm Password" name="confirmpassword" required>
+                        
+                        <div class="check" id="check">
+                            <input type="checkbox" id="showpassWord"> Show Password
+                        </div>       
+                             
+                    </div>
+
+                    <div class="btnGroup">
+                        <button class="register" type="submit">Create</button> 
+                    </div>
+
+                </form>
+                
+            </div>
+    </div>
+
+
+  
+    <script  type="module" src="../js/createShowPassword.js"></script>
+</body>
+</html>

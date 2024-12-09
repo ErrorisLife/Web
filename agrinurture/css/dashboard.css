@@ -23,10 +23,98 @@
   width: 100px;
 }
 
+
 body{
   background-color: #ffffff;
- font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Fira Sans', sans-serif;
 }
+
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.success {
+  color: green;
+  background-color: #e8ffe8;
+}
+.error {
+  color: red;
+  background-color: #ffe8e8;
+}
+
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+.success.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.error {
+  background-color: #d4edda;
+  color: #cf0c0c;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  z-index: 100;
+}
+.error.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+
+.second-container{
+  width: 100%;
+}
+
+/* Public Announcement Interface */
+.second-container h3{
+  text-align: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 1.5rem;
+}
+
+.second-container h5{
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 1.5rem;
+}
+
+.second-container .timePosted{
+  margin: 20px;
+  
+  text-align: left;
+}
+.second-container .content{
+  text-align: left;
+  font-size: .8rem;
+  
+}
+
+.second-container .content p{
+  margin: 20px;
+  padding-right: 50px;
+  
+}
+
+
 
 /* =========================== sidebar ========================= */
 .sidebar{
@@ -252,7 +340,7 @@ body{
   flex-wrap: wrap; 
   gap: 30px;
 
-/*  display: none;  Default */
+  /* display: none;   */
 }
 
 
@@ -312,14 +400,42 @@ body{
 
 /* ========================================= Upload CSS ================================ */
 
+
+/* =========================== Upload File Category ========================= */
+
+.upload-container .category, .upload-container .uploadBtn, .upload-container .file-selector{
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #939090;
+}
+
+.upload-container .uploadBtn {
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+  margin-top: 40px;
+}
+.upload-container .uploadBtn:hover {
+  background-color: #0056b3;
+}
+.upload-container .file-selector{
+  margin-bottom: 25px;
+}
+
 .upload-container .group{
   width: 95%;
   display: flex;
   flex-direction: row;
   margin-top: 80px;
   padding-left: 0;
-  display: none;
+  /* display: none; */
+  z-index: -1;
 }
+
+
 
 .upload-container  .group button{
   margin: 10px;
@@ -364,7 +480,11 @@ body{
   margin-top: 40px;
   
   z-index: 1;
-  display: none;
+  display: none; 
+}
+
+.upload-box h2{
+  margin-bottom: 25px;
 }
 
 .header-section{
@@ -412,162 +532,6 @@ body{
   margin: auto;
   
 }
-/* Will be use "Drag-Over-Effect class in J */
-.drag-over-effect div.col:first-child{
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: scale(1.1);
-}
-
-.drag-over-effect div.col:last-child{
-  opacity: 1;
-  visibility: visible;
-  pointer-events: none;
-  transform: scale(1);
-  justify-content: center;
-}
-
-.drop-section .icon{
-  font-size: 6rem;
-  margin-top: 10px;
-  color: #191818;
-}
-
-.drop-section span, .drop-section button{
-  display: block;
-  margin: auto;
-  margin-bottom: 10px;
-}
-
-.drop-section button{
-  background-color: var(--text-color);
-  color: #fff;
-  border: none;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 15px;
-  cursor: pointer;
-  margin-bottom: 15px;
-}
-
-.drop-section input{
-  display: none;
-}
-
-
-.list-section{
-   display: none; 
-  width: 90%;
-  margin: 0px 30px ;
-  padding-bottom: 10px;
-  height: auto;
-   
-}
-
-.list-section .list-title{
-  font-size: 1rem;
-  color: var(--text-color);
-  text-align: left;
-  margin-top: 10px;
-}
-
-.list-section .col img{
-  width: 60px;
-}
-
-.list-section li{
-  display: flex;
-  margin: 15px 0px;
-  padding-top: 4px;
-  border-radius: 8px;
-  transition: 0.2s;
-}
-.list-section li:hover{
-  box-shadow: #E3EAF9 0px 0px 5px 0px, #E3EAF9 0px 12px 16px 0px;
-  transition: 0.2s;
-}
-
-.list-section li .col{
-  flex: .1;
-}
-
-.list-section li .col:nth-child(1){
-  flex: .15;
-  text-align: center;
-}
-.list-section li .col:nth-child(2){
-  flex: .75;
-  text-align: left;
-  font-size: 0.9rem;
-  padding: 8px 10px;
-} 
-
-.list-section li .col:nth-child(2) div.name{
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 250px;
-  display: inline-block;
-} 
-.list-section li .col .file-name span{
-  z-index: 100;
- color: #17171f;
- float: right;
-} 
-
-.list-section li .file-progress{
-  width: 100%;
-  height: 4px;
-  margin-top: 8px;
-  border-radius: 8px;
-  background-color: #E3EAF9;
- } 
-
- .list-section li .file-progress span{
-  display: block;
-  width: 0%;
-  height: 100%;
-  border-radius: 8px;
-  background-color: #17171f;
-  transition: 0.4s;
- } 
-
- .list-section li .col .file-size{
-  font-size: 0.75rem;
-  color: var(--text-color);
-  margin-top: 3px;
- }
-
- .list-section li .col svg.cross, .list-section li .col svg.tick{
-   fill: #17171f;
-   background-color: #E3EAF9;
-   position: relative;
-   left: 10%;
-   top: 50%;
-   transform: translate(-10%, -50%);
-   border-radius: 50%;
-   
- } 
- 
- .list-section li .col svg.tick{
-   fill: #17171f;
-   background-color: transparent;
- }
-
-
- .list-section li.complete span, 
- .list-section li.complete .file-progress,
- .list-section li.complete svg.cross{
-    display: none;
- }
-
- .list-section li.in-prog .file-size, 
- .list-section li.in-prog svg.tick{
-    display: none; 
- }  
 
  /* =========================== Admin Interface for Announcement ========================== */
  .announcement{
@@ -580,6 +544,8 @@ body{
     margin-top: 40px;
     align-items: center;
     justify-content: center;
+
+    
     display: none;
  }
 
@@ -673,7 +639,7 @@ body{
  
   z-index: -1;
 
-  display: none;
+
 }
 
 .sidebar.close ~ .userManagement-container{
@@ -749,7 +715,7 @@ body{
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
  
-  display: none;
+  /* display: none; */
 }
 
 .register-container h2{
@@ -833,7 +799,7 @@ body{
   flex-direction: column;
   z-index: -1;
   
-  display: none; /*  Default */
+ /* display: none;   Default */
 }
 
 .sidebar.close ~ .setting-container{

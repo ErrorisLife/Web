@@ -1,0 +1,749 @@
+
+<?php
+// Connect to the database
+include './admin/db.php';
+
+// Check if file ID is provided
+if (isset($_GET['ID'])) {
+    $fileId = intval($_GET['ID']);
+
+    // Query to fetch file details
+    $stmt = $conn->prepare("SELECT file_name, file_type, file_data FROM uploaded_files WHERE ID = ?");
+    $stmt->bind_param("i", $fileId);
+    $stmt->execute();
+    $stmt->bind_result($fileName, $fileType, $fileData);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($fileData) {
+        // Set headers to display or download the file
+        header("Content-Type: " . $fileType);
+        header("Content-Length: " . strlen($fileData));
+
+        if (isset($_GET['download'])) {
+            header("Content-Disposition: attachment; filename=\"" . $fileName . "\"");
+        } else {
+            header("Content-Disposition: inline; filename=\"" . $fileName . "\"");
+        }
+
+        // Output the file data
+        echo $fileData;
+        exit;
+    } else {
+        echo "File not found.";
+    }
+} else {
+    echo "Invalid request.";
+}
+
+$conn->close();
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <?php
+                // Query the database for files
+                $query = "SELECT * FROM uploaded_files ORDER BY uploaded_at DESC";
+                $result = $conn->query($query);
+
+                $documents = []; // Array to store document files
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $fileName = $row['file_name'];
+                        $fileType = $row['file_type']; // e.g., application/pdf
+                        $fileId = $row['id'];
+
+                        // Supported document extensions
+                        $documentExtensions = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+                        // Filter supported files
+                        if (in_array($fileType, $documentExtensions)) {
+                            $documents[] = ['id' => $fileId, 'name' => $fileName, 'type' => $fileType];
+                        }
+                    }
+                }       
+            ?>
+
+
+                 if (!empty($documents)) {
+                            foreach ($documents as $document) {
+                                // Default icon
+                                $icon = "image/png icon.png";
+
+                                // Set icon based on file type
+                                switch ($document['type']) {
+                                    case 'application/pdf':
+                                        $icon = 'image/png icon.png';
+                                        break;
+                                    case 'application/msword':
+                                    case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                                        $icon = 'image/docx.png';
+                                        break;
+                                }
+
+                                // Generate links for view and download
+                                echo '<div class="pdf-item">';
+                                echo '  <a href="retrieve_file.php?id=' . $document['id'] . '" target="_blank">
+                                            <img src="' . $icon . '" alt="File Icon" class="pdf-icon">
+                                        </a>';
+                                echo '  <a href="retrieve_file.php?id=' . $document['id'] . '" target="_blank">' . htmlspecialchars($document['name']) . '</a>';
+                                echo '  <a href="retrieve_file.php?id=' . $document['id'] . '&download=true">
+                                            <button class="download">Download</button>
+                                        </a>';
+                                echo '</div>';
+                            }
+                        } else {
+                            echo '<p>No documents found.</p>';
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    // Check that the file was uploaded correctly
+                    // Check if the file already exists
+
+                    if (file_exists($destPath)) {
+                        $_SESSION['error_message'] = "A file with the same name already exists in the selected category.";
+                    } else {
+                        // Move file and save to database
+                        if (move_uploaded_file($fileTmpPath, $destPath)) {
+                            // Prepare SQL to insert file details into the database
+                            $stmt = $conn->prepare("INSERT INTO uploaded_files (file_name, file_data, category) VALUES (?, ?, ?)");
+                            $stmt->bind_param("sss", $fileName, $destPath, $category);
+
+                            if ($stmt->execute()) {
+                                $_SESSION['success_message'] = "$fileName has been uploaded and saved.";
+                            } else {
+                                $_SESSION['error_message'] = "Error saving file details to the database.";
+                            }
+
+                            $stmt->close();
+                        } else {
+                            $_SESSION['error_message'] = "Error moving the uploaded file. Check that the destination directory exists and is writable.";
+                        }
+                    }
+                } else {
+                    $_SESSION['error_message'] = "No file uploaded or there was an error during upload.";
+                }
+            
+
+
+     // Set upload directory and destination path
+                    $uploadDir = "uploads/" . $category . "/";
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0755, true);
+                    }                               
+            
+                     $destPath = $uploadDir . $fileName;
+                     $absolutePath = $rootDirectory . $destPath;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+     include 'db.php';
+
+    session_start();
+
+   
+    // Restrict access to Admins only
+    if (!isset($_SESSION['user_id']) || $_SESSION['userType'] !== 'Admin') {
+        header("Location: a-login.html");
+        exit;
+    }
+
+    
+    
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="refresh" content="10"> --> 
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+   
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    
+    <div class="sidebar ">
+       <!-- ======Logo====== -->
+        <a href="#" class="logo-box">
+            <img src="../image/smaller pixels.png" alt="logo">
+            <div class="logo-name">Agrinurture</div>
+        </a>
+
+     
+        <!-- ======Menu====== -->
+        <ul class="sidebar-list">     
+             <li>
+                 <div class="title" >
+                    <a href="dashboard.php" class="link" id="adminDashboard" >
+                        <i class='bx bxs-grid-alt'></i>
+                        <span  class="name">Dashboard</span>
+                    </a>
+                    
+                 </div>
+             </li>
+             
+             <li>
+                <div class="title"  >
+                   <a href="uploadingfile.php" class="link" id="upload-link">
+                    <i class='bx bxs-plus-circle'></i>
+                       <span class="name">Upload</span>
+                   </a>
+                   
+                </div>
+            </li>
+        
+        <!-- 
+            <li class="userManage">
+                <div class="title" >
+                   <a href="#" class="link" id="userManagement">
+                    <i class='bx bxs-user-detail'></i>
+                       <span  class="name" > User Management </span>   
+                    </a>
+                          
+                </div>
+               
+        </li>  -->
+            
+           
+            <!-- <li >
+                <div class="title" >
+                   <a href="#" class="link" id="reports">
+                    <i class='bx bxs-report'></i>
+                       <span  class="name">Reports</span>
+                   </a>
+                </div>
+            </li>  -->
+              
+            <li >
+                <div class="title" >
+                   <a href="setting.php" class="link" id="setting">
+                    <i class='bx bxs-cog'></i>
+                       <span  class="name">Setting</span>
+                   </a>
+                </div>
+            </li> 
+          
+            <li>
+                <div class="title" >
+                   <a href="confirmation.php" class="link" id="logout">
+                    <i class='bx bxs-log-out'></i>
+                       <span  class="name">Log Out</span>
+                   </a>
+                   
+                </div>
+            </li>     
+        </ul>
+    </div>
+   
+      <!-- ==========Home Section========= -->
+      <section class="home">
+            <div class="toggle-sidebar">
+                <i class='bx bx-menu'></i>
+                <div class="text">Admin</div>
+            </div>
+      </section>
+
+  
+
+  
+     <!-- ======== Upload ======= -->
+     <section class="upload-container">
+
+        <div class="group">
+            <button  class="uploads" id="uploadButton">Upload Files</button>
+            <button  class="posts" id="postButton">Post</button>
+        </div>
+
+       
+
+        <div class="upload-box" id="upload-box" >
+
+        <?php
+
+            
+            // Check if the form was submitted
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formType']) && $_POST['formType'] === 'fileUpload') {
+
+            
+                // Check if a file was uploaded
+                if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+                    // Get the category
+                    $category = isset($_POST['category']) ? htmlspecialchars($_POST['category']) : '';
+            
+                    // Validate category
+                    $allowedCategories = ['Crops', 'Livestock', 'Organic'];
+                    if (!in_array($category, $allowedCategories)) {
+                        $_SESSION['error_message'] = "Invalid category selected.";
+                        header("Location: " . $_SERVER['PHP_SELF']);
+                        exit;
+                    }
+            
+                    // File details
+                    $fileTmpPath = $_FILES['file']['tmp_name'];
+                    $fileName = $_FILES['file']['name'];
+                    $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+            
+                    // Validate file extension
+                    $allowedExtensions = ['docx', 'doc', 'pdf', 'mp4'];
+                    if (!in_array($fileExtension, $allowedExtensions)) {
+                        $_SESSION['error_message'] = "Invalid file type. Only .docx, .doc, .pdf, and .mp4 are allowed.";
+                        header("Location: " . $_SERVER['PHP_SELF']);
+                        exit;
+                    }
+            
+                    // Set upload directory and destination path
+                    $uploadDir = 'uploads/' . $category . '/';
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0755, true);
+                    }
+            
+                   
+            
+                     $destPath = $uploadDir . $fileName;
+
+                    // Check that the file was uploaded correctly
+                    if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
+                        // Move file and save to database
+                        if (move_uploaded_file($fileTmpPath, $destPath)) {
+                            // Prepare SQL to insert file details into the database
+                            $stmt = $conn->prepare("INSERT INTO uploaded_files (file_name, file_path, category) VALUES (?, ?, ?)");
+                            $stmt->bind_param("sss", $fileName, $destPath, $category);
+                    
+                            if ($stmt->execute()) {
+                                $_SESSION['success_message'] = "$fileName  uploaded and saved to database successfully!";
+                            } else {
+                                $_SESSION['error_message'] = "Error saving file details to the database.";
+                            }
+                    
+                            $stmt->close();
+                        } else {
+                            $_SESSION['error_message'] = "Error moving the uploaded file. Check that the destination directory exists and is writable.";
+                        }
+                    } else {
+                        $_SESSION['error_message'] = "Error uploading the file. Check that the file was uploaded correctly.";
+                    }
+                } else {
+                    $_SESSION['error_message'] = "No file uploaded or there was an error during upload.";
+                }
+            
+                // Redirect to the same page to prevent form resubmission
+                header("Location: " . $_SERVER['PHP_SELF']);
+                exit;
+            }
+
+        ?>
+
+
+            <h2>Upload Here</h2>
+
+            <!-- Display success or error message -->
+                <?php if (isset($_SESSION['success_message'])): ?>
+                    <div class="message success">
+                        <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['error_message'])): ?>
+                    <div class="message error">
+                        <?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?>
+                    </div>
+                <?php endif; ?>
+
+            <br><br>
+
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="return confirmUpload();">
+                <input type="hidden" name="formType" value="fileUpload">
+                <input class="file-selector" type="file" name="file" id="file"  accept=".docx, .doc, .pdf, .mp4" required > <br><br>
+           
+
+                <label for="category">Choose a Category:</label><br><br>
+
+                <select class="category" name="category" id="category" required>
+                    <option value="">-- Select Category --</option>
+                    <option value="Crops">Crop</option>
+                    <option value="Livestock">Livestock</option>
+                    <option value="Organic">Organic Vegetable</option>
+                </select><br>
+
+                <button class="uploadBtn" type="submit">Upload</button>
+            </form>
+                
+
+        </div>
+           
+         <!-- ------------------------------------ Admin Interface for Announcement --------------------------------------------- -->
+        <div id="announcement" class="announcement">
+        
+            <?php 
+                        // Check if the request is POST
+                if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['formType']) && $_POST['formType'] === 'announcementPost') {
+                    // Retrieve form data
+                    $title = $conn->real_escape_string($_POST['titleofannouncement']);
+                    $description = $conn->real_escape_string($_POST['message']);
+                    $category = $conn->real_escape_string($_POST['category']);
+
+                    // SQL query to insert data with the current date
+                    $sql = "INSERT INTO announcement (title, description, category, date) 
+                            VALUES ('$title', '$description', '$category', CURDATE())";
+
+                    if ($conn->query($sql) === TRUE) {
+                        echo "<script>
+                                alert('Announcement posted successfully!');
+                                window.location.href = 'dashboard.php'; // Redirect to the form after success
+                            </script>";
+                    } else {
+                        echo "<script>
+                                alert('Error: Unable to post the announcement.');
+                                window.location.href = 'uploadingfile.php'; // Redirect on error
+                            </script>";
+                    }
+
+
+                    // Close the connection
+                    $conn->close();
+             }
+         
+         
+         ?>
+
+            <h3>New Post</h3>
+
+            <form id="announcementForm" action="" method="POST">
+                <input type="hidden" name="formType" value="announcementPost">
+                    <div class="innerbox" id="innerbox"> 
+                        <div class="boxed">
+                            <label for="title">Title</label>
+                            <input type="text" name="titleofannouncement" id="title" placeholder=" Title" required>
+                        
+                            <label for="description">Description</label>
+                            <textarea name="message" placeholder="Description" required></textarea>
+
+                            <label for="category">Category</label>
+                            <select class="category" name="category" id="category" required>
+                                <option value="Announcement">Announcement</option>
+                                <option value="Update">Update</option>                          
+                                <option value="Event">Event</option>
+                            </select>   
+                        </div>
+                        <div class="btnPost">
+                            <button type="submit" id="postAnnouncement">Post</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+
+    </section>
+
+  
+
+
+        
+        
+
+
+    <script type="module"  src="../js/admin.js"></script>
+
+    <script>
+          function confirmUpload() {
+                return confirm("Are you sure you want to upload this file?");
+         }
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
+<?php
+    include './admin/db.php';
+    
+    session_start();
+    ;
+
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: ./admin/a-login.html");
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'];
+
+   
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinurture</title>
+
+
+    
+    <link rel="stylesheet" href="css/document.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
+    
+</head>
+<body>
+
+    <nav>
+        
+        <input type="checkbox" name="" id="check">
+        <label for="check" class="checkbtn"> 
+            <i class="fa-solid fa-bars" ></i>
+        </label>
+        
+        
+        <div class="logo-holder">
+            <div class="holder">
+                <a href="announcement.php"><img src="image/smaller pixels.png"  alt="agrinurure logo"></a>
+            </div>
+            <div class="holder">
+                <a href="announcement.php"><h3>AGRI<span>NURTURE</span></h3></a>
+            </div>    
+        </div>
+        
+
+        <ul >        
+            <li ><a href="announcement.php">Home</a></li>
+            <li ><a href="documents.php">Documents</a></li>
+            <li ><a href="videos.php">Videos</a></li> 
+            <li ><a href="contact.php">Contact Us</a></li> 
+            <li id="profile"><a href="profile.php">Profile</a></li>
+            <li class="login" id="logout"><a href="logoutconfirmation.php">Logout</a></li>                      
+        </ul>
+
+       
+    </nav>
+
+   
+
+    <div class="document-container">
+
+   
+        <div class="sidebar">
+            <?php 
+                            // Fetch user name from the database
+                $sql = "SELECT fullname FROM users WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $user_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $user = $result->fetch_assoc();
+
+                $fullname = $user['fullname'];
+            ?>
+               
+            <div class="user-info">
+            <h3><?php echo htmlspecialchars($fullname); ?></h3>
+                <div class="settings">
+                    <span><i class="fa-solid fa-gear"></i>  Setting  <i class="fa-solid fa-angle-down"> </i></span>
+                    <ul class="settings-menu">
+                        <li><a href="profile.php">Profile</a></li>
+                        
+                        <li><a href="logoutconfirmation.php">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3>Category</h3>
+                <ul class="category-menu">
+                    <li><a href="#">Crops</a></li>
+                    <li><a href="#">Livestock</a></li>
+                    <li><a href="#">Organic</a></li>
+                </ul>
+            </div>
+            
+        </div>
+
+    
+        <div class="search-bar">  
+
+            <?php
+                $query = "SELECT * FROM uploaded_files ORDER BY uploaded_at DESC";
+                $result = mysqli_query($conn, $query);
+                
+               // $videos = [];     Array to store video files
+                $documents = []; // Array to store document files
+                $unsupportedFiles = [];  // Array to store unsupported files
+                
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $fileName = $row['file_name'];
+                        $filePath = $row['file_path'];
+                
+                        // Get file extension
+                        $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
+                
+                        // Categorize files based on extension
+                        // $videoExtensions = ['mp4', 'avi', 'mkv', 'mov'];
+                        $documentExtensions = ['pdf', 'doc', 'docx'];
+                
+                    if (in_array(strtolower($fileExtension), $documentExtensions)) {
+                            $documents[] = ['name' => $fileName, 'path' => $filePath,  'extension' => $fileExtension ];
+                        }else{
+                            $unsupportedFiles[] = $fileName;
+                        }
+                    }
+                }
+
+                                // Optionally log unsupported files
+                if (!empty($unsupportedFiles)) {
+                    error_log("Unsupported files: " . implode(", ", $unsupportedFiles));
+                }
+                            
+            ?>
+
+            <input class="search-bar-search" type="text" placeholder="Search here...">
+            <button class="search-bar-button">Search</button>
+            
+            <div class="document-list">
+                <?php
+                if (!empty($documents)) {
+                    foreach ($documents as $document) {
+
+                        $icon = "image/png icon.png"; // Default icon // Default icon
+                
+                        // Set icon based on file extension
+                        switch ($document['extension']) {
+                            case 'pdf':
+                                $icon = 'image/png icon.png';
+                                break;
+                            case 'doc':
+                            case 'docx':
+                                $icon = 'image/doc.png';
+                                break;
+                            
+                        }
+
+                        echo '<div class="pdf-item">                 
+                             <a href="' . $document['path'] . '" target="_blank">
+                               <img src="' . $icon . '" alt="File Icon" class="pdf-icon">
+                             </a> 
+
+                            <a href="' . $document['path'] . '" target="_blank">' . $document['name'] . '</a>
+                            <a href="' . $document['path'] . '" download>
+                                <button class="download">Download PDF</button>
+                            </a>
+                        </div>';
+                    }
+                }
+                ?>
+
+                
+         </div>
+
+
+            
+    </div>
+    
+        
+    
+</body>
+</html>

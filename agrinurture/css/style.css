@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;800;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700;800;900&display=swap');
 
 
 /* css\style.css */
@@ -132,18 +132,7 @@ nav ul li a:hover {
  #doc, #vid{
     display: none;
  }
- nav ul .login{
-    background-color: #218838;
-    padding: 0.5rem 1rem;
-    border-radius: 7px;
-    margin-left: 10px;
- }
-
- nav ul .login:hover{
-    color: #fff;
-    background-color: #218838
- }
-
+ 
 
 
 /* Styling of the hamburger menu     */
@@ -423,9 +412,37 @@ button:hover {
 
 /* Contact Us Container */
 
-.contact-container {
+/*Contact Main Page */
 
-    padding-top: 0;
+.contact-header{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    padding-top: 130px;
+    background-color: #fff;
+    flex: start;
+    height: 10vh;
+}
+
+.contact-header h1{
+    text-align: left;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+
+}
+.contact-header a:hover{ 
+    padding: 10px 20px;
+}
+.contact-header a:hover{ 
+    cursor: pointer;
+}
+
+
+.contact-container {
+    padding-top: 30px;
     max-width: 1200px;
     margin: auto;
 
@@ -517,24 +534,6 @@ button:hover {
 }
 
 
-
-/*Contact Main Page */
-
-.contact-header{
-    max-width: 1200px;
-    margin: auto;
-    padding:   20px;
-    background-color: #fff;
-    flex: start;
-    height: 10vh;
-}
-
-.contact-header h1{
-    text-align: left;
-    font-size: 2.5rem;
-    color: #000;
-    margin-bottom: 20px;
-}
 
 
 
@@ -646,14 +645,14 @@ button:hover {
     align-items: flex-start;
     justify-content: center;
     text-align: right;
-    position: static;
-    padding: 95px 20px;
+    padding: 130px 20px;
+    
 }
 
 .first-content {
     color: white;
     position: static;
-    z-index: 2;
+   
     max-width: 1200px;
     width: 80%;
 
@@ -667,8 +666,8 @@ button:hover {
 }
 
 .first-content h1 span {
-    color: #fff; 
-    -webkit-text-stroke: .1rem #000 
+    color: #000; 
+    -webkit-text-stroke: .1rem yellow 
 }
 
 .first-content p {
@@ -676,9 +675,10 @@ button:hover {
     font-weight: 500;
     color: #fff;
     padding-top: 50px;
+   
 }
 
-
+/* 
 
 .about-second-section {
     
@@ -702,7 +702,7 @@ button:hover {
 
 .image-container {
     flex: 1 1 50%;
-    min-width: 280px; /* Ensures the image does not get too small */
+    min-width: 280px; 
 }
 
 .image-container img {
@@ -738,7 +738,7 @@ button:hover {
     color: black;
     text-align: justify;
 }
-
+ */
 
 
 
@@ -896,6 +896,7 @@ button:hover {
       text-align: left;
   }
   
+
   .contact-section {
       color: white;
       padding: 20px 40px 20px 40px;
