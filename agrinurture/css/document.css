@@ -19,13 +19,65 @@ html, body {
 }
 
 
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  .success {
+    color: green;
+    background-color: #e8ffe8;
+  }
+  .error {
+    color: red;
+    background-color: #ffe8e8;
+  }
+  
+  
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+  }
+  .success.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+  
+  .error {
+    background-color: #d4edda;
+    color: #cf0c0c;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 100;
+  }
+  .error.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
 .sidebar{
     padding-top: 30px;
     padding-left: 20px;
-    height: 100%;
+    height: 100vh;
     width: 260px;  
     background-color: #308c44f9;
-  
+    transition: transform 0.3s ease;
+    
+}
+
+#profile{
+    display: none;
 }
 
 /* Styling for the user information section */
@@ -39,6 +91,34 @@ html, body {
     font-size: 1.5rem;
     color: white;
 }
+
+
+
+
+/* Public Announcement Interface */
+.second-container .Title h2{
+    text-align: center;
+   
+  }
+  .second-container .timePosted{
+    margin: 10px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    text-align: left;
+  }
+  .second-container .content{
+    text-align: left;
+    font-size: .8rem;
+    
+  }
+  
+  .second-container .content p{
+    margin: 20px;
+    padding-right: 50px;
+    
+  }
+
+
 
 
 /* Settings dropdown menu styling */
@@ -157,9 +237,56 @@ html, body {
     font-style: italic;
 }
 
+.search-bar h3 {
+    float: left;
+    color: #161616;
+    margin-bottom: 10px;
+}
+
+/* Profile Styling */
+/* 
+.container {
+    width: 90%;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    
+}
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder {
+    color: #bbb;
+}
+.button {
+    width: 100%;
+    padding: 10px;
+    background-color: #218838;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #00cc00;
+}
+
+ 
 
 
 
+/* ============================== Document Styling ================================ */
 .document-list {
     display: flex;
     justify-content: center;
@@ -213,8 +340,53 @@ html, body {
 
 
 
+/* ============================== Video Styling ================================ */
+.video-list{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    gap: 10px;
+  
+    
+}
+
+.video-item{
+    padding: 5px;
+    margin: 10px;
+    width: 450px;
+    height: 100%;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.video-item:hover{
+   transform: scale(1.1);
+   cursor: pointer;
+
+}
+
+.video-list p{
+    font-size: 1.4rem;
+}
+
+.video-item iframe{
+    width: 450px;
+    height: 315px;  
+    border-radius: 10px;
+}
 
 
+
+
+
+
+
+/* Media Queries for Documents */
 
 @media (max-width: 768px) {
 
@@ -232,12 +404,23 @@ html, body {
     .search-bar-search{
         width: 80%;
     }
+
+
+
+ 
 }
 
 
 
 
+/* Tablet Media and Small Screen Queries */
+
 @media (max-width: 480px) {
+
+    nav ul {  
+        height: 40vh;  
+        top: 64px;
+    }
 
     .document-container{
         display: flex;
@@ -309,4 +492,90 @@ html, body {
     }
 
 
+
+    /* Sidebar hide in Mobile */
+    .sidebar{
+        display: none; 
+        
+    }
+
+    #profile{
+        display: block;
+    }
+
+    /* Profile mobile container */
+    .container{
+        margin: 10px;
+    }
 }
+
+
+
+
+/* Media Queries for Videos */
+
+/* Tablet Media and Small Screen Queries */
+@media (max-width: 768px) {
+
+    .search-bar{
+        padding-top: 80px;
+    }
+
+    .search-bar-search{
+        width: 70%;
+    }
+
+    .video-list{
+        flex-direction: row;
+        justify-content: center;
+        max-width: 768px; 
+    }
+
+    .video-item{
+        margin: 0;      
+        padding: 15px 15px 30px 15px ;   
+        width: 100%;
+       
+    }
+
+    .video-item iframe{
+        width: 100%; 
+        height: 380px;   
+        border-radius: 5px;  
+    }
+
+    .video-list p{
+        font-size: 1.4rem;
+    }
+}
+
+
+
+
+/* Media Queries for Videos */
+
+/* Mobile Media Queries */
+@media (max-width: 480px) {
+
+    .search-bar{
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .search-bar-button{
+        padding: 7px 7px;
+    }
+
+    .video-item iframe{
+       height: 210px; 
+    }
+    .video-list p{
+        font-size: 1rem;
+    }
+
+}
+
+
+
+
+

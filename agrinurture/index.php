@@ -1,4 +1,6 @@
 <?php
+     include './admin/db.php';
+
     session_start();
     $isLoggedIn = isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true;
 ?> 
@@ -15,7 +17,6 @@
     
     <title>Agrinurture</title>
 
-    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"  />
@@ -45,36 +46,48 @@
             <li id="doc"><a href="documents.html">Documents</a></li>
             <li id="vid"><a href="videos.html">Videos</a></li>
             <li ><a href="about.html">About</a></li>
-            <li ><a href="contact.html">Contact Us</a></li> 
-            <li class="login"><a href="admin/a-login.html">Login</a></li>    
+            <li ><a href="contact.php">Contact Us</a></li> 
+            <li class="login"><a href="admin/a-login.php">Login</a></li>    
         </ul>
 
     </nav>
    
    <div class="slogan-container">  
         <div class="content">
-            <h3>Agriculture Insights at your fingertips</h3>
+            <h3>Agriculture insights at your fingertips</h3>
         </div>
     </div>
    
     
     <div class="second-container">
+
+        <?php // Fetch the latest announcement
+                    $sql = "SELECT * FROM announcement ORDER BY ID DESC LIMIT 1";  // Adjust table name as needed
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        // Fetch the announcement data
+                        $row = $result->fetch_assoc();
+                        $title = $row['title'];
+                        $content = $row['description'];
+                        $date_posted = $row['date'];
+                    } else {
+                        $title = "No Announcement Available";
+                        $date_posted = "";
+                        $content = "There are currently no announcements to display.";
+                    }
+
+                    $conn->close();
+            ?>
+
         <div class="Title">
-            <h2> Training on Organic Vegetable Production</h2>
+            <h2 class="announcement-title"> <?php echo htmlspecialchars($title); ?></h2>
         </div>
         <div class="timePosted">
-            <p>Posted on 01.01.2022</p>
+            <p>Posted on <?php echo htmlspecialchars($date_posted); ?></p>
         </div>
         <div class="content">
-
-                <p>Organic vegetable production is a growing field that emphasizes sustainable farming practices. This training program is designed to educate farmers, gardeners, and enthusiasts about the methods involved in cultivating vegetables without the use of synthetic fertilizers, pesticides, or genetically modified organisms (GMOs).</p>
-                
-                <p>The program covers various topics, including:</p>
-                
-
-                <p>Participants will also learn about the benefits of organic farming, including improving soil health, promoting biodiversity, and producing healthier, chemical-free food for consumers. The training will combine hands-on activities with classroom instruction to ensure participants gain practical experience in organic vegetable farming.</p>
-
-                <p>Whether you're an experienced farmer looking to transition to organic methods, or a beginner just starting out, this training will provide you with the knowledge and skills needed to succeed in organic vegetable production.</p>
+            <p><?php echo nl2br(htmlspecialchars($content)); ?></p>
 
         </div>
 
@@ -87,9 +100,8 @@
 
         <div class="text-picture-container">
             <div class="text">
-                <p>We believe that every farmer deserves to have control over their crops, and we are here to help them achieve just that. 
-                Our platform provides farmers with the tools they need to grow better crops, sell their produce at fair prices, 
-                and make informed decisions and connect with potential buyers.</p>
+                <p>This platform is designed to bridge the gap between knowledge and practice, offering a reliable source of educational resources tailored for farmers and livestock handlers. 
+                </p>
                 <br><br>
                 <a href="about.html"><button>About Us</button></a>
             </div>
@@ -105,9 +117,7 @@
             <h2 id="features">Our Features</h2>
         </div>
         <p class="description">
-            In a more general sense, the patterns of the strategic decision enforces the overall effect of the proper stem of the critical thinking. 
-            It's a well-known fact that the possibility of achieving elements of the operational system, as far as the
-            ground-breaking technology is questionable, must be compatible with the questionable thesis.
+           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta quod error voluptatem voluptas, at aut unde, incidunt minima magni eveniet ducimus impedit. Ducimus, exercitationem eum dolorum perferendis doloribus recusandae quidem?
         </p>
 
         <div class="row">
@@ -118,7 +128,7 @@
                 <?php if ($isLoggedIn): ?>
                     <a href="documents.html" class="read-more">READ MORE</a>
                 <?php else: ?>
-                    <a href="./admin/a-login.html" class="read-more">READ MORE</a>
+                    <a href="./admin/a-login.php" class="read-more">READ MORE</a>
                 <?php endif; ?>
             </div>
 
@@ -129,7 +139,7 @@
                 <?php if ($isLoggedIn): ?>
                     <a href="documents.html" class="read-more">READ MORE</a>
                 <?php else: ?>
-                    <a href="./admin/a-login.html" class="read-more">READ MORE</a>
+                    <a href="./admin/a-login.php" class="read-more">READ MORE</a>
                 <?php endif; ?>
             </div>
 
